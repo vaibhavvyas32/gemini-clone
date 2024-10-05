@@ -1,10 +1,7 @@
-import React from 'react'
 import './Main.css'
 import { assets } from '../../assets/assets'
 
-type Props = {}
-
-const Main = (props: Props) => {
+const Main = () => {
     return (
         <div className='main'>
             <div className="nav">

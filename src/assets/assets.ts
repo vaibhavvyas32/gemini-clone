@@ -14,7 +14,26 @@ import code_icon from './code_icon.png'
 import send_icon from './send_icon.png'
 import gemini_icon from './gemini_icon.png'
 
-export const assets = {
+export interface Assets {
+    history_icon: string;
+    menu_icon: string;
+    plus_icon: string;
+    question_icon: string;
+    setting_icon: string;
+    bulb_icon: string;
+    compass_icon: string;
+    gallery_icon: string;
+    mic_icon: string;
+    user_icon: string;
+    youtube_icon: string;
+    message_icon: string;
+    code_icon: string;
+    send_icon: string;
+    gemini_icon: string;
+}
+
+
+export const assets: Assets = {
     history_icon,
     menu_icon,
     plus_icon,
