@@ -36,7 +36,7 @@ const generationConfig = {
     responseMimeType: "text/plain",
 };
 
-async function run(prompt: string): Promise<void> {
+async function run(prompt: string): Promise<string> {
     const chatSession = model.startChat({
         generationConfig,
         // safetySettings: Adjust safety settings

@@ -13,13 +13,13 @@ const ContextProvider = (props: { children: React.ReactNode }) => {
 
     const [input, setInput] = useState("");
     const [recentPrompt, setRecentPrompt] = useState("");
-    const [previousPrompt, setPreviousPrompt] = useState([]);
+    const [previousPrompt, setPreviousPrompt] = useState<string[]>([]);
     const [showResult, setShowResult] = useState(false);
 
     const [loading, setLoading] = useState(false);
     const [resultData, setResultData] = useState("");
 
-    const delayPara = (index, nextWord) => {
+    const delayPara = (index: number, nextWord: string) => {
         setTimeout(function () {
             setResultData(prev => prev + nextWord);
         }, 75 * index)
@@ -37,22 +37,20 @@ const ContextProvider = (props: { children: React.ReactNode }) => {
 
 
     const onSent = async (prompt: string) => {
-
-        setResultData("")
-        setLoading(true)
-        setShowResult(true)
-        let response;
+        setResultData("");
+        setLoading(true);
+        setShowResult(true);
+        let response: string;
         if (prompt !== undefined) {
             response = await run(prompt);
-            setRecentPrompt(prompt)
+            setRecentPrompt(prompt);
         }
         else {
-            setPreviousPrompt(prev => [...prev, input])
-            setRecentPrompt(input)
-            response = await run(input)
+            setPreviousPrompt((prev) => [...prev, input]);
+            setRecentPrompt(input);
+            response = await run(input);
         }
-        // setRecentPrompt(input)
-        // setPreviousPrompt(prev => [...prev, input])
+
         let responseArray = response.split("**");
         let newResponse = "";
         for (let i = 0; i < responseArray.length; i++) {
@@ -71,8 +69,8 @@ const ContextProvider = (props: { children: React.ReactNode }) => {
             delayPara(i, nextWord + " ");
         }
 
-        setLoading(false)
-        setInput("")
+        setLoading(false);
+        setInput("");
 
     };
 
@@ -99,28 +97,3 @@ const ContextProvider = (props: { children: React.ReactNode }) => {
 };
 
 export default ContextProvider;
-
-
-
-// const ContextProvider = (props) => {
-
-//     const onSent = async (prompt) => {
-//         await run(prompt)
-//     }
-
-//     onSent("what is reactjs?")
-
-//     const contextValue = {
-
-//     }
-
-
-//     return (
-//         <Context.Provider value={contextValue}>
-//             {props.children}
-//         </Context.Provider>
-//     )
-// }
-
-
-// export default ContextProvider
