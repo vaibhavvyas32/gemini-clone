@@ -33,6 +33,11 @@ const ContextProvider = (props: { children: React.ReactNode }) => {
         setLoading(true);
         setShowResult(true);
         let response: string;
+
+
+        const isCodeRequest = /generate code|show code|give me code/i.test(prompt);
+
+
         if (prompt !== undefined) {
             response = await run(prompt);
             setRecentPrompt(prompt);
@@ -53,6 +58,21 @@ const ContextProvider = (props: { children: React.ReactNode }) => {
                 newResponse += "<b>" + responseArray[i] + "</b>";
             }
         }
+
+
+        // Handles ## Heading 2
+        newResponse = newResponse.replace(/##\s*(.*)/g, "<h2>$1</h2>");
+
+
+        // if the prompt has to generate code then 
+        if (isCodeRequest) {
+            newResponse = `\`\`\`javascript\n${newResponse}\n\`\`\``;
+        }
+
+        //handle ``` in inline code blocks
+        newResponse = newResponse.replace(/```([^```]+)```/g, "<pre><code>$1</code></pre>");
+
+
         let newResponse2 = newResponse.split("*").join("</br>")
         let newResponseArray = newResponse2.split(" ");
         for (let i = 0; i < newResponseArray.length; i++) {

@@ -13,6 +13,7 @@ import message_icon from './message_icon.png'
 import code_icon from './code_icon.png'
 import send_icon from './send_icon.png'
 import gemini_icon from './gemini_icon.png'
+import user_icon1 from './user_icon1.jpeg'
 
 export interface Assets {
     history_icon: string;
@@ -30,6 +31,7 @@ export interface Assets {
     code_icon: string;
     send_icon: string;
     gemini_icon: string;
+    user_icon1: string;
 }
 
 
@@ -48,5 +50,6 @@ export const assets: Assets = {
     message_icon,
     code_icon,
     send_icon,
-    gemini_icon
+    gemini_icon,
+    user_icon1,
 }
