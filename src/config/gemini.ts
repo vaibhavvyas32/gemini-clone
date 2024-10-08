@@ -5,15 +5,14 @@
  * $ npm install @google/generative-ai
  */
 
-import {
-    GoogleGenerativeAI,
-    HarmCategory,
-    HarmBlockThreshold,
-} from "@google/generative-ai";
 
-const apiKey = process.env.GEMINI_API_KEY;
+
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold, } from "@google/generative-ai";
+
+// const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+console.log(apiKey)
 const genAI = new GoogleGenerativeAI(apiKey);
-
 
 type generationConfig = {
     temperature: number;
