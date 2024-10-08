@@ -24,18 +24,10 @@ const ContextProvider = (props: { children: React.ReactNode }) => {
             setResultData(prev => prev + nextWord);
         }, 75 * index)
     }
-
     const newChat = () => {
         setLoading(false);
         setShowResult(false);
-
     }
-
-
-
-
-
-
     const onSent = async (prompt: string) => {
         setResultData("");
         setLoading(true);
@@ -62,19 +54,14 @@ const ContextProvider = (props: { children: React.ReactNode }) => {
             }
         }
         let newResponse2 = newResponse.split("*").join("</br>")
-        // setResultData(newResponse2)
         let newResponseArray = newResponse2.split(" ");
         for (let i = 0; i < newResponseArray.length; i++) {
             const nextWord = newResponseArray[i];
             delayPara(i, nextWord + " ");
         }
-
         setLoading(false);
         setInput("");
-
     };
-
-
     const contextValue = {
         previousPrompt,
         setPreviousPrompt,
@@ -88,7 +75,6 @@ const ContextProvider = (props: { children: React.ReactNode }) => {
         setInput,
         newChat,
     };
-
     return (
         <Context.Provider value={contextValue}>
             {props.children}

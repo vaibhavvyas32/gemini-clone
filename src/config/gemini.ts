@@ -11,7 +11,6 @@ import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold, } from "@google/g
 
 // const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-console.log(apiKey)
 const genAI = new GoogleGenerativeAI(apiKey);
 
 type generationConfig = {
@@ -44,7 +43,6 @@ async function run(prompt: string): Promise<string> {
     });
 
     const result = await chatSession.sendMessage(prompt);
-    console.log(result.response.text());
 
     return result.response.text();
 }
