@@ -1,4 +1,4 @@
-import "./Main.css";
+import "../../styles/Main.css";
 import { assets } from "../../assets/assets";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
