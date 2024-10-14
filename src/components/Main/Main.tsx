@@ -2,6 +2,7 @@ import "../../styles/Main.css";
 import { assets } from "../../assets/assets";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
+import { GlobalThemeContext } from "../../context/ThemeContext";
 
 const Main = () => {
   const {
@@ -13,9 +14,10 @@ const Main = () => {
     setInput,
     input,
   } = useContext(Context);
+  const { theme } = useContext(GlobalThemeContext);
 
   return (
-    <div className="main">
+    <div className={`main ${theme}`}>
       <div className="nav">
         <p>Gemini</p>
         <img src={assets.user_icon1} alt="" />

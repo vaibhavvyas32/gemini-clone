@@ -7,7 +7,9 @@ interface GlobalThemeContext {
 
 export const GlobalThemeContext = createContext({
   theme: "light",
-  toggleTheme: () => {},
+  toggleTheme: () => {
+    "light";
+  },
 });
 
 const ThemeProvider = (props: { children: React.ReactNode }) => {

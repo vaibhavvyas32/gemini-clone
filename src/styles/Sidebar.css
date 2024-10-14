@@ -2,7 +2,8 @@
     min-height: 100vh;
     display: inline-flex;
     flex-direction: column;
-    background-color: #f0f4f9;
+    /* background-color: #f0f4f9; */
+    background-color: var(--sidebar-bg);
     justify-content: space-between;
     padding: 25px 15px;
 }
